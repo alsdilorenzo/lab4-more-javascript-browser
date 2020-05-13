@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/todostyle.css">
+
+    <title>ToDo Manager</title>
+
+    <!-- Javascript -->
+    <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="left-sidebar" aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="todomanager.html">
+        <img src="https://image.flaticon.com/icons/svg/2285/2285576.svg" width="35" height="35" id="TodoIcon" class="d-inline-block align-top" alt="">ToDo Manager</a>
+    <form class="form-inline mx-auto my-2 my-lg-0 d-none d-sm-block">
+        <input class="form-control mr-sm-2" type="search" placeholder="find task..." aria-label="Search">
+    </form>
+    <div class="navbar-nav ml-md-auto">
+        <a class="nav-item nav-link" href="todomanager.html">
+            <img src="https://image.flaticon.com/icons/svg/1077/1077012.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row vheight">
+
+        <!--Sidebar-->
+        <aside class="collapse d-sm-block col-sm-4 col-12 bg-light below" id="sidebar">
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action active" id="filter-all">All</a>
+                <a href="#" class="list-group-item list-group-item-action" id="filter-important">Important</a>
+                <a href="#" class="list-group-item list-group-item-action" id="filter-today">Today</a>
+                <a href="#" class="list-group-item list-group-item-action" id="filter-week">Next 7 Days</a>
+                <a href="#" class="list-group-item list-group-item-action" id="filter-private">Private</a>
+                <a href="#" class="list-group-item list-group-item-action" id="filter-shared">Shared With...</a>
+            </div>
+            <div class="my-5">
+                <h6 class="border-bottom border-gray p-3 mb-0">Projects</h6>
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action">Web Applications I</a>
+                    <a href="#" class="list-group-item list-group-item-action">Personal</a>
+                </div>
+            </div>
+        </aside>
+
+        <!--Main Content-->
+        <main class="col-sm-8 col-12 below">
+            <h1 id="task-filter-head">All</h1>
+
+            <!--Task list-->
+            <ul class="list-group list-group-flush" id="tasks">
+            </ul>
+
+            <!-- New task button -->
+            <button type="button" class="btn btn-dark" id="bottomBtn">+</button>
+
+        </main>
+    </div>
+</div>
+</body>
+</html>
