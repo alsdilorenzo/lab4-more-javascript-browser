@@ -46,7 +46,7 @@ class TaskManager {
     }
 
     /**
-     * Get the private taks
+     * Get the private tasks
      */
     get private() {
         return this.tasks.filter((el) => {
