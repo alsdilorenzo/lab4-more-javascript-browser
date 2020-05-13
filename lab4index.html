@@ -1,24 +1,31 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/todostyle.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/custom.css">
 
-    <title>ToDo Manager</title>
+        <title>ToDo Manager</title>
 
-    <!-- Javascript -->
-    <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- Javascript -->
+        <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script defer src="js/moment.min.js"></script>
 
-</head>
+        <script defer src="js/task.js"></script>
+        <script defer src="js/projects.js"></script>
+        <script defer src="js/filters.js"></script>
+        <script defer src="js/taskmanager.js"></script>
+        <script defer src="js/app.js"></script>
+        <script defer src="js/main.js"></script>
+    </head>
 <body>
 
 <!--Navbar-->
@@ -45,18 +52,17 @@
         <!--Sidebar-->
         <aside class="collapse d-sm-block col-sm-4 col-12 bg-light below" id="sidebar">
             <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action active" id="filter-all">All</a>
-                <a href="#" class="list-group-item list-group-item-action" id="filter-important">Important</a>
-                <a href="#" class="list-group-item list-group-item-action" id="filter-today">Today</a>
-                <a href="#" class="list-group-item list-group-item-action" id="filter-week">Next 7 Days</a>
-                <a href="#" class="list-group-item list-group-item-action" id="filter-private">Private</a>
-                <a href="#" class="list-group-item list-group-item-action" id="filter-shared">Shared With...</a>
+                <a href="#" class="list-group-item list-group-item-action active" data-id="filter-all">All</a>
+                <a href="#" class="list-group-item list-group-item-action" data-id="filter-important">Important</a>
+                <a href="#" class="list-group-item list-group-item-action" data-id="filter-today">Today</a>
+                <a href="#" class="list-group-item list-group-item-action" data-id="filter-week">Next 7 Days</a>
+                <a href="#" class="list-group-item list-group-item-action" data-id="filter-private">Private</a>
+                <a href="#" class="list-group-item list-group-item-action" data-id="filter-shared">Shared With...</a>
             </div>
             <div class="my-5">
                 <h6 class="border-bottom border-gray p-3 mb-0">Projects</h6>
-                <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-action">Web Applications I</a>
-                    <a href="#" class="list-group-item list-group-item-action">Personal</a>
+                <div class="list-group list-group-flush" id="project-id">
+
                 </div>
             </div>
         </aside>
@@ -70,7 +76,73 @@
             </ul>
 
             <!-- New task button -->
-            <button type="button" class="btn btn-dark" id="bottomBtn">+</button>
+            <button type="button" class="btn btn-dark" id="bottomBtn" data-toggle="modal" data-target="#addTask">+</button>
+
+            <div class="modal" id="addTask" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add a Task</h5>
+                            <button type="button" class="close" id="closeModal" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form role="form" method="POST" action="" id="addForm">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label">Description</label>
+                                    <div>
+                                        <input type="text" class="form-control input-lg" name="Description" placeholder="Type a description..." id="form_description" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Project</label>
+                                    <div>
+                                        <input type="text" class="form-control input-lg" name="Description" placeholder="Type a project for the task..." id="form_project">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div>
+                                        <label for="form_important" class="control-label">Important</label>
+                                        <input type="checkbox" name="form_important" id="form_important"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div>
+                                        <label for="form_private" class="control-label">Private</label>
+                                        <input type="checkbox" name="form_private" id="form_private" checked/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label">Deadline</label>
+                                    <div>
+                                        <input type="date" class="form-control input-lg" name="Deadline" id="form_deadline_date">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <input type="time" class="form-control input-lg" name="Deadline" id="form_deadline_time">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="form-group">
+                                    <div>
+                                        <button type="submit" class="btn btn-dark">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
 
         </main>
     </div>

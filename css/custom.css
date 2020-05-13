@@ -26,7 +26,7 @@
 
 input.form-control{
     margin-top: 5px;
-    font-family: 'Raleway' !important;
+    font-family: 'Raleway Light' !important;
     border-radius: 20px;
 }
 
@@ -35,6 +35,12 @@ h1,h6{
 }
 
 .list-group-item{
+    background-color: transparent;
+    color: slategray;
+    font-family: "Raleway";
+}
+
+.list-group-item.list-group-item-action{
     background-color: transparent;
     color: slategray;
     font-family: "Raleway";
@@ -76,8 +82,12 @@ h1,h6{
     right: 0;
     bottom: 0;
     z-index: 1030;
-    padding: 4px 9pt 4px 9pt;
+    padding: 4px 9pt 5px 9pt;
     margin: 0 1.5rem 1.5rem 0;
     border-radius: 50%;
     font-family: "Google Sans";
+}
+
+.form-group .control-label{
+    font-family: "Raleway" !important;
 }
